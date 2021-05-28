@@ -18,6 +18,8 @@
     <string name="choose_theme">Choose a theme</string>
     <string name="users_db_name" translatable="false">quizza_users.db</string>
     <string name="register_welcome">"Welcome to Quizza "</string>
+    <string name="pregame_game_start">The game starts in:</string>
+    <string name="pregame_categories">Categories:</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>

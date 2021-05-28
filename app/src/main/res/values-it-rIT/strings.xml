@@ -13,4 +13,6 @@
     <string name="yes_text">SI</string>
     <string name="choose_theme">Scegli un tema</string>
     <string name="register_welcome">Benvenuto in Quizza</string>
+    <string name="pregame_game_start">La partita inizia tra:</string>
+    <string name="pregame_categories">Categorie:</string>
 </resources>
