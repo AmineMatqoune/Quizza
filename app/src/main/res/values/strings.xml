@@ -8,13 +8,16 @@
     <string name="register_button_text">Register</string>
     <string name="exit_dialog_title">EXIT?</string>
     <string name="exit_dialog_text">Are you sure you want exit Quizza?</string>
-    <string name="sound_alert_title">AUDIO</string>
+    <string name="sound_alert_title" translatable="false">AUDIO</string>
     <string name="sound_disable_text">Disable audio?</string>
     <string name="sound_enable_text">Enable audio?</string>
     <string name="yes_text">YES</string>
-    <string name="no_text">NO</string>
-    <string name="username_uppercase">USERNAME</string>
-    <string name="email_uppercase">E-MAIL</string>
+    <string name="no_text" translatable="false">NO</string>
+    <string name="username_uppercase" translatable="false">USERNAME</string>
+    <string name="email_uppercase" translatable="false">E-MAIL</string>
+    <string name="choose_theme">Choose a theme</string>
+    <string name="users_db_name" translatable="false">quizza_users.db</string>
+    <string name="register_welcome">"Welcome to Quizza "</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>

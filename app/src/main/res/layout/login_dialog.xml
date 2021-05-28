@@ -18,7 +18,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etUsernameLog"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="9dp"
@@ -30,7 +30,7 @@
         android:textColor="@color/white" />
 
     <EditText
-        android:id="@+id/etpPassword"
+        android:id="@+id/etpPasswordLog"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="9dp"

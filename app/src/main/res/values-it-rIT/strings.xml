@@ -6,4 +6,11 @@
                             Ludovico Di Iorio</string>
     <string name="register_button_text">Registrati</string>
     <string name="login_button_text">Accedi</string>
+    <string name="exit_dialog_title">USCIRE?</string>
+    <string name="exit_dialog_text">Sei sicuro di voler uscire?</string>
+    <string name="sound_disable_text">Disattivare l\'audio?</string>
+    <string name="sound_enable_text">Attivare l\'audio?</string>
+    <string name="yes_text">SI</string>
+    <string name="choose_theme">Scegli un tema</string>
+    <string name="register_welcome">Benvenuto in Quizza</string>
 </resources>
