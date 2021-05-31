@@ -20,7 +20,8 @@
     <string name="register_welcome">"Welcome to Quizza "</string>
     <string name="pregame_game_start">The game starts in:</string>
     <string name="pregame_categories">Categories:</string>
-    <string name="results_postgame">Risultati</string>
+    <string name="results_postgame">Results</string>
+    <string name="wrong_credentials_login_dialog">Correctly insert your data</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>
