@@ -45,7 +45,7 @@ class LoginDialog(myContext: Context): DialogFragment() {
                 }
             }
             else
-                Toast.makeText(appContext, getString(R.string.wrong_credentials_login_dialog), Toast.LENGTH_SHORT).show()
+                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
         }
 
         setViewModel()

@@ -1,0 +1,15 @@
+{
+  "question": "Qual è l'animale più veloce al mondo?",
+  "rightAnswer": "Ghepardo",
+  "wrongAnswers": [
+    {
+      "wrong1": "Leone"
+    },
+    {
+      "wrong2": "Aquila"
+    },
+    {
+      "wrong3": "Falco"
+    }
+  ]
+}

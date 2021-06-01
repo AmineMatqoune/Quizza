@@ -16,5 +16,5 @@
     <string name="pregame_game_start">La partita inizia tra:</string>
     <string name="pregame_categories">Categorie:</string>
     <string name="results_postgame">Risultati</string>
-    <string name="wrong_credentials_login_dialog">Inserisci correttamente i tuoi dati</string>
+    <string name="wrong_credentials_dialog">Inserisci correttamente i tuoi dati</string>
 </resources>

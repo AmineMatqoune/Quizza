@@ -1,0 +1,15 @@
+{
+  "question": "Quante sono le unità di misura nel SI?",
+  "rightAnswer": "7",
+  "wrongAnswers": [
+    {
+      "wrong1": "9"
+    },
+    {
+      "wrong2": "6"
+    },
+    {
+      "wrong3": "8"
+    }
+  ]
+}

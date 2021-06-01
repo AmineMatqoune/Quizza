@@ -1,0 +1,15 @@
+{
+  "question": "A quanto equivale sin(x)/cos(x)",
+  "rightAnswer": "tan(x)",
+  "wrongAnswers": [
+    {
+      "wrong1": "arctan(x)"
+    },
+    {
+      "wrong2": "asin(x)"
+    },
+    {
+      "wrong3": "in/co"
+    }
+  ]
+}

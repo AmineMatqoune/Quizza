@@ -1,0 +1,15 @@
+{
+  "question": "Qual è l'ultimo album di Eminem?",
+  "rightAnswer": "Music to be murder by",
+  "wrongAnswers": [
+    {
+      "wrong1": "The Eminem show"
+    },
+    {
+      "wrong2": "Recovery"
+    },
+    {
+      "wrong3": "Relapse"
+    }
+  ]
+}

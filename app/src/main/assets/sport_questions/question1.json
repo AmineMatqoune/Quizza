@@ -1,0 +1,15 @@
+{
+  "question": "Quale nazionale vinse il mondiale di calcio del 2006?",
+  "rightAnswer": "Italia",
+  "wrongAnswers": [
+    {
+      "wrong1": "Francia"
+    },
+    {
+      "wrong2": "Spagna"
+    },
+    {
+      "wrong3": "Brasile"
+    }
+  ]
+}

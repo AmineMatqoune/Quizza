@@ -1,0 +1,15 @@
+{
+  "question": "Quale è la capitale del Canada?",
+  "rightAnswer": "Ottawa",
+  "wrongAnswers": [
+    {
+      "wrong1": "Vancouver"
+    },
+    {
+      "wrong2": "Toronto"
+    },
+    {
+      "wrong3": "Montreal"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "question": "In quale anno uscì fuori dal tunnel"
+  "rightAnswer": "2003",
+  "wrongAnswers": [
+    {
+      "wrong1": "2000"
+    },
+    {
+      "wrong2": "2010"
+    },
+    {
+      "wrong3": "2007"
+    }
+  ]
+}

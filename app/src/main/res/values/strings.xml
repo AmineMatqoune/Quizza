@@ -21,7 +21,7 @@
     <string name="pregame_game_start">The game starts in:</string>
     <string name="pregame_categories">Categories:</string>
     <string name="results_postgame">Results</string>
-    <string name="wrong_credentials_login_dialog">Correctly insert your data</string>
+    <string name="wrong_credentials_dialog">Insert correctly your data</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>

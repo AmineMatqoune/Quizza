@@ -1,0 +1,15 @@
+{
+  "question": "Quale percentuale di acqua occupa la superficie terrestre?",
+  "rightAnswer": "71%",
+  "wrongAnswers": [
+    {
+      "wrong1": "33%"
+    },
+    {
+      "wrong2": "50%"
+    },
+    {
+      "wrong3": "60%"
+    }
+  ]
+}

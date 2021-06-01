@@ -1,0 +1,15 @@
+{
+  "question": "Quale regione non è bagnata dal Lago di Garda?",
+  "rightAnswer": "Emilia Romagna",
+  "wrongAnswers": [
+    {
+      "wrong1": "Veneto"
+    },
+    {
+      "wrong2": "Piemonte"
+    },
+    {
+      "wrong3": "Trentino Alto-Adige"
+    }
+  ]
+}

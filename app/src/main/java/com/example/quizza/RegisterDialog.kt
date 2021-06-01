@@ -60,7 +60,7 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                     println(getString(R.string.register_welcome))
                 }
             } else
-                Toast.makeText(appContext, "Noooo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
         }
 
         return rootView
