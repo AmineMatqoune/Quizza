@@ -50,6 +50,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     annotationProcessor"androidx.room:room-compiler:$room_version"
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.7'
+
     //cardview
     implementation "androidx.cardview:cardview:1.0.0"
 
