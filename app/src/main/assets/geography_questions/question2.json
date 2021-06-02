@@ -3,13 +3,13 @@
   "rightAnswer": "Emilia Romagna",
   "wrongAnswers": [
     {
-      "wrong1": "Veneto"
+      "wrong": "Veneto"
     },
     {
-      "wrong2": "Piemonte"
+      "wrong": "Piemonte"
     },
     {
-      "wrong3": "Trentino Alto-Adige"
+      "wrong": "Trentino Alto-Adige"
     }
   ]
 }
