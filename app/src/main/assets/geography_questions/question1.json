@@ -3,13 +3,13 @@
   "rightAnswer": "Ottawa",
   "wrongAnswers": [
     {
-      "wrong1": "Vancouver"
+      "wrong": "Vancouver"
     },
     {
-      "wrong2": "Toronto"
+      "wrong": "Toronto"
     },
     {
-      "wrong3": "Montreal"
+      "wrong": "Montreal"
     }
   ]
 }
