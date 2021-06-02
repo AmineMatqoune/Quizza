@@ -1,5 +1,6 @@
 package com.example.quizza
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,10 @@ class Homepage: AppCompatActivity() {
 
         homepageBinding.tvUsernameHomepage.text = myBundle?.getString("username")
         homepageBinding.tvScoreHomepage.text = "+" + myBundle?.getInt("totalScore").toString() + " pts"
+        homepageBinding.btnPlay.setOnClickListener{
+            val intentPregame = Intent(applicationContext, Pregame::class.java)
+            startActivity(intentPregame)
+        }
     }
 
     override fun onBackPressed() {
