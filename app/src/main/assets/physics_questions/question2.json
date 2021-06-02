@@ -3,13 +3,13 @@
   "rightAnswer": "7",
   "wrongAnswers": [
     {
-      "wrong1": "9"
+      "wrong": "9"
     },
     {
-      "wrong2": "6"
+      "wrong": "6"
     },
     {
-      "wrong3": "8"
+      "wrong": "8"
     }
   ]
 }

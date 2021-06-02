@@ -3,13 +3,13 @@
   "rightAnswer": "tan(x)",
   "wrongAnswers": [
     {
-      "wrong1": "arctan(x)"
+      "wrong": "arctan(x)"
     },
     {
-      "wrong2": "asin(x)"
+      "wrong": "asin(x)"
     },
     {
-      "wrong3": "in/co"
+      "wrong": "in/co"
     }
   ]
 }

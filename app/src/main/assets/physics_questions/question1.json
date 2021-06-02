@@ -3,13 +3,13 @@
   "rightAnswer": "9.81 m/s^2",
   "wrongAnswers": [
     {
-      "wrong1": "7.81 m/s^2"
+      "wrong": "7.81 m/s^2"
     },
     {
-      "wrong2": "1 kg/m^2"
+      "wrong": "1 kg/m^2"
     },
     {
-      "wrong3": "30 e lode"
+      "wrong": "30 e lode"
     }
   ]
 }

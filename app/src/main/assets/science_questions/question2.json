@@ -3,13 +3,13 @@
   "rightAnswer": "71%",
   "wrongAnswers": [
     {
-      "wrong1": "33%"
+      "wrong": "33%"
     },
     {
-      "wrong2": "50%"
+      "wrong": "50%"
     },
     {
-      "wrong3": "60%"
+      "wrong": "60%"
     }
   ]
 }

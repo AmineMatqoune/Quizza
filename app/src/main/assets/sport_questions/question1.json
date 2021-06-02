@@ -3,13 +3,13 @@
   "rightAnswer": "Italia",
   "wrongAnswers": [
     {
-      "wrong1": "Francia"
+      "wrong": "Francia"
     },
     {
-      "wrong2": "Spagna"
+      "wrong": "Spagna"
     },
     {
-      "wrong3": "Brasile"
+      "wrong": "Brasile"
     }
   ]
 }

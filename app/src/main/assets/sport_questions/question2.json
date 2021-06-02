@@ -3,13 +3,13 @@
   "rightAnswer": "Roma",
   "wrongAnswers": [
     {
-      "wrong1": "Juventus"
+      "wrong": "Juventus"
     },
     {
-      "wrong2": "Milan"
+      "wrong": "Milan"
     },
     {
-      "wrong3": "Inter"
+      "wrong": "Inter"
     }
   ]
 }

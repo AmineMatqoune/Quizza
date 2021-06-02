@@ -3,13 +3,13 @@
   "rightAnswer": "Music to be murdered by",
   "wrongAnswers": [
     {
-      "wrong1": "The Eminem show"
+      "wrong": "The Eminem show"
     },
     {
-      "wrong2": "Recovery"
+      "wrong": "Recovery"
     },
     {
-      "wrong3": "Relapse"
+      "wrong": "Relapse"
     }
   ]
 }

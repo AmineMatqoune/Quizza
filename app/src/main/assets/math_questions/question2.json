@@ -3,13 +3,13 @@
   "rightAnswer": "Per approssimare una funzione nell'intorno di X0",
   "wrongAnswers": [
     {
-      "wrong1": "Nessuna delle precedenti"
+      "wrong": "Nessuna delle precedenti"
     },
     {
-      "wrong2": "Per trasformare una funzione in un'altra variabile"
+      "wrong": "Per trasformare una funzione in un'altra variabile"
     },
     {
-      "wrong3": "Per trovare l'area sottesa da una curva"
+      "wrong": "Per trovare l'area sottesa da una curva"
     }
   ]
 }

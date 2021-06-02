@@ -8,9 +8,9 @@ class Question(category: Int) {
     private val categories = listOf<String>("geography", "math", "music", "physics", "science", "sport")
 
     private var myCategoryIndex = 0
-    private lateinit var myQuestion: String
-    private lateinit var myCorrectAnswer: String
-    private lateinit var myWrongAnswers: MutableList<String>
+    private lateinit var question:  String
+    private lateinit var rightAnswer: String
+    private lateinit var wrongAnswers: MutableList<WrongAnswer>
 
     init{
         //Qua dentro ci va il codice con la libreria GSON
@@ -20,9 +20,6 @@ class Question(category: Int) {
         val temp = Random.nextInt(1, 3)
         val filename = categories[myCategoryIndex] + "_questions/question" + temp.toString() + ".json"
 
-        var gson = Gson()
-        //var jsonString = Asset
-
 
         //fill myQuestion
         //fill myCorrectAnswer
@@ -30,19 +27,22 @@ class Question(category: Int) {
     }
 
     fun checkAnswer(str: String): Boolean{
-        return if (str == myCorrectAnswer) true else false
+        return if (str == rightAnswer) true else false
     }
 
     fun getCorrectAnswer(): String {
-        return myCorrectAnswer
+        return rightAnswer
     }
 
-    fun getWrongAnswers(): MutableList<String>{
-        return myWrongAnswers
+    fun getWrongAnswers(): MutableList<WrongAnswer>{
+        return wrongAnswers
     }
+}
 
+class WrongAnswer {
+    private lateinit var wrong: String
 
-
-
-
+    public fun getAnswer(): String {
+        return wrong
+    }
 }

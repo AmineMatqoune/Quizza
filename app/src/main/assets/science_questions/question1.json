@@ -3,13 +3,13 @@
   "rightAnswer": "Ghepardo",
   "wrongAnswers": [
     {
-      "wrong1": "Leone"
+      "wrong": "Leone"
     },
     {
-      "wrong2": "Aquila"
+      "wrong": "Aquila"
     },
     {
-      "wrong3": "Falco"
+      "wrong": "Falco"
     }
   ]
 }
