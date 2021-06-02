@@ -30,8 +30,7 @@
             android:id="@+id/ivCountDown"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"
-            app:srcCompat="@drawable/boe" />
+            android:layout_weight="5" />
 
         <TextView
             android:id="@+id/tvCategories"
