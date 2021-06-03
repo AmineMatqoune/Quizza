@@ -2,7 +2,7 @@ package com.example.quizza.entities
 
 import kotlin.random.Random
 
-class Match {
+class Match (jsonFiles: MutableList<String>) {
 
     companion object{
         const val TIMER_TO_SCORE_MULTIPLIER = 10   //30 seconds equals to 30*10 = 300 pts
@@ -11,17 +11,14 @@ class Match {
     private var questions = mutableListOf<Question>()
     private var questionsTimeLeft = mutableListOf<Int>(0,0,0,0)
     private var isGuessedRight = mutableListOf<Boolean>(false, false, false, false)
-
-    private var categoriesIndex = mutableListOf<Int>()
     private var currentQuestion = 0
 
     init{
         //we're generating four DIFFERENT random numbers
         //so we'll have 1 category - 1 question
-        categoriesIndex = generateRandomNumbers(4, 6)
 
-        for(i in 0..4)
-            questions.add(Question(categoriesIndex[i]))
+        //avremo un array composto da 4 stringhe che sarebbero i file json, e per ognuno di essi ci creiamo un oggetto domanda e lo carichiamo tramite gson
+
     }
 
     fun setScore(timer: Int){
@@ -42,21 +39,5 @@ class Match {
             return null
 
         return questions[currentQuestion]
-    }
-
-    private fun generateRandomNumbers(numOfRandomNumbers: Int, bound: Int): MutableList<Int>{
-        var randomNumbers = mutableListOf<Int>()
-
-        var i = 0
-        while(i <= numOfRandomNumbers){
-            var num = Random.nextInt(0 , bound)
-            if(num in randomNumbers)
-                continue
-            else
-                randomNumbers.add(num)
-
-            i++
-        }
-        return randomNumbers
     }
 }
