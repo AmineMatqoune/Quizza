@@ -58,7 +58,7 @@ class LoginDialog(myContext: Context): DialogFragment() {
     }
 
     private fun setViewModel(){
-        val loginObserver = Observer<Boolean>{ value ->
+        val loginObserver = Observer<Boolean>{
             if(LoginViewModel.getStatus() == false)
                 Toast.makeText(appContext, "Invalid Credentials", Toast.LENGTH_SHORT).show()
             else{

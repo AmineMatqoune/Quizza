@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.PersistableBundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -18,12 +19,16 @@ import kotlin.random.Random
 
 class Pregame: AppCompatActivity() {
 
+    private val MAX_NUMBER_QUESTIONS_FOR_CATEGORY = 2
+
     private lateinit var pregameBinding: PregameBinding
-    private var counter = MutableLiveData<Int>()
+    private var counter = 4 // 3 seconds + 1 seconds of countdown
+    private var filesLoaded = MutableLiveData<Boolean>()
 
     //attributi spostati da Match e Question
     private var categoriesIndex = mutableListOf<Int>()
     private val categories = listOf<String>("geography", "math", "music", "physics", "science", "sport")
+    private var chosenQuestions = mutableListOf<Int>()
     private val filenames = mutableListOf<String>()
     private val jsonFiles = mutableListOf<String>()
 
@@ -40,7 +45,6 @@ class Pregame: AppCompatActivity() {
     }
 
     private fun launchCountdownAnimation(){
-        counter.value = 4
         ObjectAnimator.ofFloat(pregameBinding.ivCountDown, "scaleX", 1.6f).apply {
             duration = 1000
             start()
@@ -56,30 +60,33 @@ class Pregame: AppCompatActivity() {
         //fai l'accesso al file e crea i quattro oggetti question
         //avvia Ingame.kt
 
-        //generiamo i 4 numeri casuali a cui corrisponderanno le categorie delle domande
-        categoriesIndex = generateRandomNumbers(4, 6)
+        setViewModel()
 
-        //generiamo 4 numeri per identificare le domande da prendere per categoria
-        val temp = generateRandomNumbers(4,2)
+        //generate 4 randoms (different each other -> true) so we know which categories will be loaded this game
+        categoriesIndex = generateRandomNumbers(4, 0, 6, true)
+        
+        //generate 4 randoms (not different each other -> false) so we know which question we'll load for each category
+        chosenQuestions = generateRandomNumbers(4, 1, MAX_NUMBER_QUESTIONS_FOR_CATEGORY + 1, false)
 
-        //per ogni domanda dobbiamo generarci il file casuale relativo alla domanda
-        var i : Int = 0
+        //build question's filename
+        var i = 0
         while(i != 4){
-            filenames[i] = categories[categoriesIndex[i]] + "_questions/question" + temp[i].toString() + ".json"
+            filenames.add(categories[categoriesIndex[i]] + "_questions/question" + chosenQuestions[i].toString() + ".json")
             i++
         }
 
-        //creiamo 4 coroutine che si occuperanno di accedere ai file nell'asset
+        //creiamo una coroutine che si occuperà di accedere ai 4 file nell'asset
         GlobalScope.launch(Dispatchers.IO) {
-            jsonFiles[0] = async { readFromAssets(filenames[0]) }.toString()
-            jsonFiles[1] = async { readFromAssets(filenames[1]) }.toString()
-            jsonFiles[2] = async { readFromAssets(filenames[2]) }.toString()
-            jsonFiles[3] = async { readFromAssets(filenames[3]) }.toString()
+            jsonFiles.add(async { readFromAssets(filenames[0]) }.toString())
+            jsonFiles.add(async { readFromAssets(filenames[1]) }.toString())
+            jsonFiles.add(async { readFromAssets(filenames[2]) }.toString())
+            jsonFiles.add(async { readFromAssets(filenames[3]) }.toString())
+            filesLoaded.postValue(true)
         }
 
 
         //il chiamante attende che le coroutine carichino in jsonFiles i 4 file e li passa a match
-        val match: Match(jsonFiles.await())
+        //val match: Match(jsonFiles.await())
 
         //SONO ARRIVATO QUI..DA COMPLETARE IL PASSAGGIO DI JSONFILES A MATCH COSICCHE' POSSA CREARE TRAMITE GSON 4 QUESTION
 }
@@ -87,7 +94,7 @@ class Pregame: AppCompatActivity() {
     private fun runTimer() {
         object: CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                counter.value = counter.value?.minus(1)
+                counter--
                 tickSound()
                 /*when(counter.value){
                     3 -> pregameBinding.ivCountDown.setBackgroundResource(R.drawable.number3)
@@ -112,19 +119,26 @@ class Pregame: AppCompatActivity() {
         audioPlayer.start()
     }
 
-    private fun generateRandomNumbers(numOfRandomNumbers: Int, bound: Int): MutableList<Int>{
+    private fun generateRandomNumbers(numOfRandomNumbers: Int, lowerBound: Int, upperBound: Int, differentNumbers: Boolean): MutableList<Int>{
         var randomNumbers = mutableListOf<Int>()
-
         var i = 0
-        while(i <= numOfRandomNumbers){
-            var num = Random.nextInt(0 , bound)
-            if(num in randomNumbers)
-                continue
-            else
-                randomNumbers.add(num)
 
-            i++
+        if(differentNumbers){      //generate different random numbers
+            while(i < numOfRandomNumbers){
+                var num = Random.nextInt(lowerBound , upperBound)
+                if(num in randomNumbers)
+                    continue
+                else
+                    randomNumbers.add(num)
+                i++
+            }
+        }else{       //generate random numbers
+            while(i < numOfRandomNumbers){
+                randomNumbers.add(Random.nextInt(lowerBound , upperBound))
+                i++
+            }
         }
+
         return randomNumbers
     }
 
@@ -132,5 +146,12 @@ class Pregame: AppCompatActivity() {
         val bufferReader = application.assets.open(filename).bufferedReader()
         val data = bufferReader.use { it.readText() }
         return data
+    }
+
+    private fun setViewModel(){
+        val fileLoaderObserver = Observer<Boolean> {
+            if(it == true) Toast.makeText(applicationContext, "File caricati", Toast.LENGTH_LONG).show()
+        }
+        filesLoaded.observe(this, fileLoaderObserver)
     }
 }
