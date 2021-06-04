@@ -6,14 +6,14 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.quizza.databinding.PregameBinding
 import com.example.quizza.entities.Match
-import kotlinx.android.synthetic.main.pregame.*
+import kotlinx.android.synthetic.main.pregame.view.*
 import kotlinx.coroutines.*
 import kotlin.random.Random
 
@@ -24,10 +24,12 @@ class Pregame: AppCompatActivity() {
     private lateinit var pregameBinding: PregameBinding
     private var counter = 4 // 3 seconds + 1 seconds of countdown
     private var filesLoaded = MutableLiveData<Boolean>()
+    private val categories = listOf<String>("geography", "math", "music", "physics", "science", "sport")
+    private val categoriesImage = listOf<Int>(R.drawable.geography_bg, R.drawable.math_bg, R.drawable.music_bg,
+            R.drawable.physics_bg, R.drawable.science_bg, R.drawable.sport_bg)
 
     //attributi spostati da Match e Question
     private var categoriesIndex = mutableListOf<Int>()
-    private val categories = listOf<String>("geography", "math", "music", "physics", "science", "sport")
     private var chosenQuestions = mutableListOf<Int>()
     private val filenames = mutableListOf<String>()
     private val jsonFiles = mutableListOf<String>()
@@ -64,7 +66,8 @@ class Pregame: AppCompatActivity() {
 
         //generate 4 randoms (different each other -> true) so we know which categories will be loaded this game
         categoriesIndex = generateRandomNumbers(4, 0, 6, true)
-        
+        showCategories()
+
         //generate 4 randoms (not different each other -> false) so we know which question we'll load for each category
         chosenQuestions = generateRandomNumbers(4, 1, MAX_NUMBER_QUESTIONS_FOR_CATEGORY + 1, false)
 
@@ -146,6 +149,20 @@ class Pregame: AppCompatActivity() {
         val bufferReader = application.assets.open(filename).bufferedReader()
         val data = bufferReader.use { it.readText() }
         return data
+    }
+
+    fun showCategories(){
+        //setting text
+        pregameBinding.cvCategoryA.tvCategoryA.text = categories[categoriesIndex[0]]
+        pregameBinding.cvCategoryB.tvCategoryB.text = categories[categoriesIndex[1]]
+        pregameBinding.cvCategoryC.tvCategoryC.text = categories[categoriesIndex[2]]
+        pregameBinding.cvCategoryD.tvCategoryD.text = categories[categoriesIndex[3]]
+
+        //settingImages
+       var images = resources.obtainTypedArray(R.array.category_images)
+        pregameBinding.cvCategoryB.background = images.getResourceId(1, 0)
+        pregameBinding.cvCategoryC.background = categoriesImage[categoriesIndex[2]].toDrawable()
+        pregameBinding.cvCategoryD.background = categoriesImage[categoriesIndex[3]].toDrawable()
     }
 
     private fun setViewModel(){

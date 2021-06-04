@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="category_images">
+        <item>@drawable/geography_bg</item>
+        <item>@drawable/math_bg</item>
+        <item>@drawable/music_bg</item>
+        <item>@drawable/physics_bg</item>
+        <item>@drawable/science_bg</item>
+        <item>@drawable/sport_bg</item>
+    </integer-array>
+</resources>
