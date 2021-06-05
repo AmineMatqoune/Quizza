@@ -1,16 +1,17 @@
 package com.example.quizza.entities
 
-class Question() {
-    private var myCategoryIndex = 0
+import java.io.Serializable
+
+class Question(): Serializable {
+    private lateinit var myCategoryIndex: String
     private lateinit var question:  String
     private lateinit var rightAnswer: String
     private lateinit var wrongAnswers: MutableList<WrongAnswer>
 
     init{
-        //Qua dentro ci va il codice con la libreria GSON
         //fill myCategory
         //myCategoryIndex = category
-        println("\nCREATA QUESTION")
+        //println("\nCREATA QUESTION")
         /*val temp = Random.nextInt(1, 3)
         val filename = categories[myCategoryIndex] + "_questions/question" + temp.toString() + ".json"*/
 
@@ -21,6 +22,14 @@ class Question() {
 
     fun checkAnswer(str: String): Boolean{
         return if (str == rightAnswer) true else false
+    }
+
+    fun getCategory(): String {
+        return myCategoryIndex
+    }
+
+    fun getQuestion(): String {
+        return question
     }
 
     fun getCorrectAnswer(): String {
@@ -37,7 +46,7 @@ class Question() {
     }
 }
 
-class WrongAnswer {
+class WrongAnswer: Serializable {
     private lateinit var wrong: String
 
     fun getAnswer(): String {

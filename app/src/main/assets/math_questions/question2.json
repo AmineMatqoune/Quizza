@@ -1,4 +1,5 @@
 {
+  "myCategoryIndex": "1",
   "question": "A cosa servono i polinomi di Taylor?",
   "rightAnswer": "Per approssimare una funzione nell'intorno di X0",
   "wrongAnswers": [

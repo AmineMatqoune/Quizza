@@ -1,5 +1,6 @@
 {
-  "question": "Quante sono le unità di misura nel SI?",
+  "myCategoryIndex": "3",
+  "question": "Quante sono le unità di misura nel Sistema Internazionale?",
   "rightAnswer": "7",
   "wrongAnswers": [
     {

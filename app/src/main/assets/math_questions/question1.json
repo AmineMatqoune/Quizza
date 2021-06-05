@@ -1,5 +1,6 @@
 {
-  "question": "A quanto equivale sin(x)/cos(x)",
+  "myCategoryIndex": "1",
+  "question": "A quanto equivale sin(x)/cos(x)?",
   "rightAnswer": "tan(x)",
   "wrongAnswers": [
     {

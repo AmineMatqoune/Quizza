@@ -1,5 +1,6 @@
 {
-  "question": "Quanto vale la costante gravitazionale terrestre?"
+  "myCategoryIndex": "3",
+  "question": "Quanto vale la costante gravitazionale terrestre?",
   "rightAnswer": "9.81 m/s^2",
   "wrongAnswers": [
     {

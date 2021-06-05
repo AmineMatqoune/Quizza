@@ -1,5 +1,6 @@
 {
-  "question": "Quale è la capitale del Canada?",
+  "myCategoryIndex": "0",
+  "question": "Qual è la capitale del Canada?",
   "rightAnswer": "Ottawa",
   "wrongAnswers": [
     {
