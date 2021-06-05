@@ -6,15 +6,18 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.quizza.databinding.PregameBinding
 import com.example.quizza.entities.Match
+import com.example.quizza.entities.Question
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.pregame.view.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import kotlin.random.Random
 
 class Pregame: AppCompatActivity() {
@@ -32,7 +35,8 @@ class Pregame: AppCompatActivity() {
     private var categoriesIndex = mutableListOf<Int>()
     private var chosenQuestions = mutableListOf<Int>()
     private val filenames = mutableListOf<String>()
-    private val jsonFiles = mutableListOf<String>()
+    private val jsonFiles = mutableListOf<String>(null.toString(), null.toString(), null.toString(), null.toString())
+    private var questions = mutableListOf<Question>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,33 +82,54 @@ class Pregame: AppCompatActivity() {
             i++
         }
 
+
+
         //creiamo una coroutine che si occuperà di accedere ai 4 file nell'asset
         GlobalScope.launch(Dispatchers.IO) {
-            jsonFiles.add(async { readFromAssets(filenames[0]) }.toString())
-            jsonFiles.add(async { readFromAssets(filenames[1]) }.toString())
-            jsonFiles.add(async { readFromAssets(filenames[2]) }.toString())
-            jsonFiles.add(async { readFromAssets(filenames[3]) }.toString())
+            /*jsonFiles.add(async { readFromAssets(filenames[0]) }.await())
+            jsonFiles.add(async { readFromAssets(filenames[1]) }.await())
+            jsonFiles.add(async { readFromAssets(filenames[2]) }.await())
+            jsonFiles.add(async { readFromAssets(filenames[3]) }.await())*/
+
+            jsonFiles[0] = async { readFromAssets(filenames[0]) }.await()
+            jsonFiles[1] = async { readFromAssets(filenames[1]) }.await()
+            jsonFiles[2] = async { readFromAssets(filenames[2]) }.await()
+            jsonFiles[3] = async { readFromAssets(filenames[3]) }.await()
+
+            val gson = Gson()
+
+            val question1: Question = gson.fromJson(jsonFiles[0], Question::class.java)
+            val question2: Question = gson.fromJson(jsonFiles[1], Question::class.java)
+            val question3: Question = gson.fromJson(jsonFiles[2], Question::class.java)
+            val question4: Question = gson.fromJson(jsonFiles[3], Question::class.java)
+
+            questions.add(question1)
+            questions.add(question2)
+            questions.add(question3)
+            questions.add(question4)
+
+            //println("\n" + jsonFiles[3] + "\n")
+            //PROBLEMA TROVATO: crasha se si accede a jsonFile[3]
             filesLoaded.postValue(true)
+
         }
 
 
         //il chiamante attende che le coroutine carichino in jsonFiles i 4 file e li passa a match
-        //val match: Match(jsonFiles.await())
-
-        //SONO ARRIVATO QUI..DA COMPLETARE IL PASSAGGIO DI JSONFILES A MATCH COSICCHE' POSSA CREARE TRAMITE GSON 4 QUESTION
-}
+        //val match = Match(jsonFiles)
+    }
 
     private fun runTimer() {
         object: CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 counter--
                 tickSound()
-                /*when(counter.value){
+                when(counter){
                     3 -> pregameBinding.ivCountDown.setBackgroundResource(R.drawable.number3)
                     2 -> pregameBinding.ivCountDown.setBackgroundResource(R.drawable.number2)
                     1 -> pregameBinding.ivCountDown.setBackgroundResource(R.drawable.number1)
                     0 -> pregameBinding.ivCountDown.setBackgroundResource(R.drawable.game_start)
-                }*/
+                }
             }
 
             override fun onFinish() {
@@ -159,15 +184,18 @@ class Pregame: AppCompatActivity() {
         pregameBinding.cvCategoryD.tvCategoryD.text = categories[categoriesIndex[3]]
 
         //settingImages
-       var images = resources.obtainTypedArray(R.array.category_images)
-        pregameBinding.cvCategoryB.background = images.getResourceId(1, 0)
-        pregameBinding.cvCategoryC.background = categoriesImage[categoriesIndex[2]].toDrawable()
-        pregameBinding.cvCategoryD.background = categoriesImage[categoriesIndex[3]].toDrawable()
+       var imgs = resources.obtainTypedArray(R.array.category_images)
+        pregameBinding.cvCategoryA.setBackgroundResource(imgs.getResourceId(categoriesIndex[0], 0))
+        pregameBinding.cvCategoryB.setBackgroundResource(imgs.getResourceId(categoriesIndex[1], 0))
+        pregameBinding.cvCategoryC.setBackgroundResource(imgs.getResourceId(categoriesIndex[2], 0))
+        pregameBinding.cvCategoryD.setBackgroundResource(imgs.getResourceId(categoriesIndex[3], 0))
     }
 
     private fun setViewModel(){
         val fileLoaderObserver = Observer<Boolean> {
-            if(it == true) Toast.makeText(applicationContext, "File caricati", Toast.LENGTH_LONG).show()
+            if(it == true) {
+                val match = Match(questions)
+            }
         }
         filesLoaded.observe(this, fileLoaderObserver)
     }

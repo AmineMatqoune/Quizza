@@ -71,5 +71,4 @@ class LoginDialog(myContext: Context): DialogFragment() {
 
         LoginViewModel.isLogged.observe(this, loginObserver)
     }
-
 }

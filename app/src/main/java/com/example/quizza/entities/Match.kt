@@ -1,8 +1,9 @@
 package com.example.quizza.entities
 
-import kotlin.random.Random
+import android.util.Log
+import com.google.gson.Gson
 
-class Match (jsonFiles: MutableList<String>) {
+class Match (questions: MutableList<Question>) {
 
     companion object{
         const val TIMER_TO_SCORE_MULTIPLIER = 10   //30 seconds equals to 30*10 = 300 pts
@@ -14,11 +15,25 @@ class Match (jsonFiles: MutableList<String>) {
     private var currentQuestion = 0
 
     init{
-        //we're generating four DIFFERENT random numbers
-        //so we'll have 1 category - 1 question
-
+        println("\n\nCREATO MATCH\n\n")
         //avremo un array composto da 4 stringhe che sarebbero i file json, e per ognuno di essi ci creiamo un oggetto domanda e lo carichiamo tramite gson
+        this.questions = questions
 
+        println(questions[0].getInfo())
+        println(questions[1].getInfo())
+        println(questions[2].getInfo())
+        println(questions[3].getInfo())
+
+       /*while(i != 4){
+            questions.add(gson.fromJson(jsonFiles[i], Question::class.java))
+        }*/
+
+
+/*
+        Log.i("QUESTION", questions[0].getInfo());
+        Log.i("QUESTION", questions[1].getInfo());
+        Log.i("QUESTION", questions[2].getInfo());
+        Log.i("QUESTION", questions[3].getInfo());*/
     }
 
     fun setScore(timer: Int){
