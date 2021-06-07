@@ -8,18 +8,6 @@ class Question(): Serializable {
     private lateinit var rightAnswer: String
     private lateinit var wrongAnswers: MutableList<WrongAnswer>
 
-    init{
-        //fill myCategory
-        //myCategoryIndex = category
-        //println("\nCREATA QUESTION")
-        /*val temp = Random.nextInt(1, 3)
-        val filename = categories[myCategoryIndex] + "_questions/question" + temp.toString() + ".json"*/
-
-        //fill myQuestion
-        //fill myCorrectAnswer
-        //fill myWrongAnswers
-    }
-
     fun checkAnswer(str: String): Boolean{
         return if (str == rightAnswer) true else false
     }
@@ -36,8 +24,8 @@ class Question(): Serializable {
         return rightAnswer
     }
 
-    fun getWrongAnswers(): MutableList<WrongAnswer>{
-        return wrongAnswers
+    fun getWrongAnswers(index: Int): String{
+        return if (index >= wrongAnswers.size) wrongAnswers.last().getAnswer() else wrongAnswers[index].getAnswer()
     }
 
     fun getInfo(): String {

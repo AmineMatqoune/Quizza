@@ -27,7 +27,7 @@
                 android:layout_weight="2"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
-                android:text="60s"
+                android:text="30s"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
@@ -37,8 +37,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:clickable="false"
-                android:progress="50"
+                android:max="30"
+                android:progress="30"
                 android:progressDrawable="@drawable/loading_bar"
                 android:thumbOffset="8dp"
                 app:tickMarkTint="#FFFFFF" />
@@ -66,6 +66,7 @@
                     android:id="@+id/tvQuestionIngame"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="24dp"
                     android:fontFamily="@font/happy_monkey"
                     android:gravity="center"
                     android:textColor="@color/text_color"
@@ -95,8 +96,9 @@
                 android:layout_marginBottom="16dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:onClick="validateAnswer"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="8dp" >
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:id="@+id/layoutAnswerA"
@@ -109,9 +111,9 @@
                         android:id="@+id/tvAnswerA"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/happy_monkey"
                         android:gravity="center"
-                        android:text="answer"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -130,6 +132,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:onClick="validateAnswer"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="8dp">
 
@@ -144,9 +147,9 @@
                         android:id="@+id/tvAnswerB"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/happy_monkey"
                         android:gravity="center"
-                        android:text="answer"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -173,8 +176,9 @@
                 android:layout_marginBottom="30dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:onClick="validateAnswer"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="8dp" >
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:id="@+id/layoutAnswerC"
@@ -187,9 +191,9 @@
                         android:id="@+id/tvAnswerC"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/happy_monkey"
                         android:gravity="center"
-                        android:text="answer"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -208,8 +212,9 @@
                 android:layout_marginBottom="30dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:onClick="validateAnswer"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="8dp" >
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:id="@+id/layoutAnswerD"
@@ -222,9 +227,9 @@
                         android:id="@+id/tvAnswerD"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/happy_monkey"
                         android:gravity="center"
-                        android:text="answer"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>

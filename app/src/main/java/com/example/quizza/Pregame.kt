@@ -6,10 +6,7 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.quizza.databinding.PregameBinding
@@ -18,9 +15,6 @@ import com.example.quizza.entities.Question
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.pregame.view.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.IO
-import java.io.Serializable
-import kotlin.random.Random
 
 class Pregame: AppCompatActivity() {
 
@@ -63,11 +57,11 @@ class Pregame: AppCompatActivity() {
         setViewModel()
 
         //generate 4 randoms (different each other -> true) so we know which categories will be loaded this game
-        categoriesIndex = generateRandomNumbers(4, 0, 6, true)
+        categoriesIndex = Utils.generateRandomNumbers(4, 0, 6, true)
         showCategories()
 
         //generate 4 randoms (not different each other -> false) so we know which question we'll load for each category
-        chosenQuestions = generateRandomNumbers(4, 1, MAX_NUMBER_QUESTIONS_FOR_CATEGORY + 1, false)
+        chosenQuestions = Utils.generateRandomNumbers(4, 1, MAX_NUMBER_QUESTIONS_FOR_CATEGORY + 1, false)
 
         //build question's filename
         var i = 0
@@ -116,29 +110,6 @@ class Pregame: AppCompatActivity() {
         audioPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
         audioPlayer.isLooping = false
         audioPlayer.start()
-    }
-
-    private fun generateRandomNumbers(numOfRandomNumbers: Int, lowerBound: Int, upperBound: Int, differentNumbers: Boolean): MutableList<Int>{
-        var randomNumbers = mutableListOf<Int>()
-        var i = 0
-
-        if(differentNumbers){      //generate different random numbers
-            while(i < numOfRandomNumbers){
-                var num = Random.nextInt(lowerBound , upperBound)
-                if(num in randomNumbers)
-                    continue
-                else
-                    randomNumbers.add(num)
-                i++
-            }
-        }else{                      //generate random numbers
-            while(i < numOfRandomNumbers){
-                randomNumbers.add(Random.nextInt(lowerBound , upperBound))
-                i++
-            }
-        }
-
-        return randomNumbers
     }
 
     private fun readFromAssets(filename: String): String {

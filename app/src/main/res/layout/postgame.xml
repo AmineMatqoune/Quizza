@@ -48,8 +48,7 @@
                 android:id="@+id/ivQuestionA"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                app:srcCompat="@drawable/right_answer" />
+                android:layout_weight="1.5" />
 
             <TextView
                 android:id="@+id/tvQuestionA"
@@ -58,7 +57,6 @@
                 android:layout_weight="2.5"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
-                android:text="+XXX"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
@@ -82,8 +80,7 @@
                 android:id="@+id/imageView6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                app:srcCompat="@drawable/right_answer" />
+                android:layout_weight="1.5" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -92,7 +89,6 @@
                 android:layout_weight="2.5"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
-                android:text="+XXX"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
 
@@ -118,8 +114,7 @@
                 android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                app:srcCompat="@drawable/wrong_answer" />
+                android:layout_weight="1.5" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -128,7 +123,6 @@
                 android:layout_weight="2.5"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
-                android:text="+XXX"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
 
@@ -154,8 +148,7 @@
                 android:id="@+id/imageView8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                app:srcCompat="@drawable/right_answer" />
+                android:layout_weight="1.5" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -164,7 +157,6 @@
                 android:layout_weight="2.5"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
-                android:text="+XXX"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
 
@@ -183,7 +175,6 @@
             android:layout_weight="1.5"
             android:fontFamily="@font/coiny"
             android:gravity="center"
-            android:text="+XXX points"
             android:textColor="#FFFFFF"
             android:textSize="32sp" />
 
@@ -194,7 +185,6 @@
             android:layout_weight="1.5"
             android:fontFamily="@font/coiny"
             android:gravity="center"
-            android:text="+ XXX XXX points"
             android:textColor="#FFFFFF"
             android:textSize="32sp" />
 
