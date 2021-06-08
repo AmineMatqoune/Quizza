@@ -6,6 +6,7 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -40,6 +41,8 @@ class Pregame: AppCompatActivity() {
         launchCountdownAnimation()
         loadGame()
     }
+
+    override fun onBackPressed() {}
 
     private fun launchCountdownAnimation(){
         ObjectAnimator.ofFloat(pregameBinding.ivCountDown, "scaleX", 1.6f).apply {
@@ -99,8 +102,10 @@ class Pregame: AppCompatActivity() {
 
             override fun onFinish() {
                 val intentIngame = Intent(applicationContext, Ingame::class.java)
-                intentIngame.putExtra("match_instance", singleMatch)
+                intentIngame.putExtra(intent.extras?.getInt("total_score").toString(), singleMatch)
+                intentIngame.putExtras(intent.extras!!)
                 startActivity(intentIngame)
+                finish()
             }
         }.start()
     }
@@ -114,8 +119,7 @@ class Pregame: AppCompatActivity() {
 
     private fun readFromAssets(filename: String): String {
         val bufferReader = application.assets.open(filename).bufferedReader()
-        val data = bufferReader.use { it.readText() }
-        return data
+        return bufferReader.use { it.readText() }
     }
 
     fun showCategories(){
@@ -127,10 +131,10 @@ class Pregame: AppCompatActivity() {
 
         //setting images
        var imgs = resources.obtainTypedArray(R.array.category_images)
-        pregameBinding.cvCategoryA.setBackgroundResource(imgs.getResourceId(categoriesIndex[0], 0))
-        pregameBinding.cvCategoryB.setBackgroundResource(imgs.getResourceId(categoriesIndex[1], 0))
-        pregameBinding.cvCategoryC.setBackgroundResource(imgs.getResourceId(categoriesIndex[2], 0))
-        pregameBinding.cvCategoryD.setBackgroundResource(imgs.getResourceId(categoriesIndex[3], 0))
+        pregameBinding.tvCategoryA.setBackgroundResource(imgs.getResourceId(categoriesIndex[0], 0))
+        pregameBinding.tvCategoryB.setBackgroundResource(imgs.getResourceId(categoriesIndex[1], 0))
+        pregameBinding.tvCategoryC.setBackgroundResource(imgs.getResourceId(categoriesIndex[2], 0))
+        pregameBinding.tvCategoryD.setBackgroundResource(imgs.getResourceId(categoriesIndex[3], 0))
     }
 
     private fun setViewModel(){

@@ -19,6 +19,10 @@ class Match (questions: MutableList<Question>): Serializable {
         questionsTimeLeft[pos] = timer * TIMER_TO_SCORE_MULTIPLIER
     }
 
+    fun getScore(index: Int): Int{
+        return questionsTimeLeft[index]
+    }
+
     fun checkAnswer(answer: String): Boolean{
         val result = questions[currentQuestionIndex].checkAnswer(answer)
         if(result == false)
@@ -32,5 +36,13 @@ class Match (questions: MutableList<Question>): Serializable {
         if(currentQuestionIndex == 4)
             return null
         return questions[currentQuestionIndex]
+    }
+
+    fun getQuestions(): List<Question>{
+        return questions
+    }
+
+    fun startGame(){
+        currentQuestionIndex = 0
     }
 }

@@ -10,15 +10,15 @@ import com.example.quizza.databinding.HomepageBinding
 class Homepage: AppCompatActivity() {
 
     private lateinit var homepageBinding: HomepageBinding
-    private var myBundle: Bundle? = null
+    private lateinit var myBundle: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homepageBinding = HomepageBinding.inflate(layoutInflater)
         setContentView(homepageBinding.root)
 
-        myBundle = intent.extras
-        when(myBundle?.getString("avatar")){    //myBundle can be null-able
+        myBundle = intent.extras!!
+        when(myBundle.getString("avatar")){    //myBundle can be null-able
             "Joe" -> homepageBinding.ivAvatarHomepage.setBackgroundResource(R.drawable.joe)
             "Boe" -> homepageBinding.ivAvatarHomepage.setBackgroundResource(R.drawable.boe)
             "Lara" -> homepageBinding.ivAvatarHomepage.setBackgroundResource(R.drawable.lara)
@@ -27,16 +27,15 @@ class Homepage: AppCompatActivity() {
             "Rosa" -> homepageBinding.ivAvatarHomepage.setBackgroundResource(R.drawable.rosa)
         }
 
-        homepageBinding.tvUsernameHomepage.text = myBundle?.getString("username")
-        homepageBinding.tvScoreHomepage.text = "+" + myBundle?.getInt("totalScore").toString() + " pts"
+        homepageBinding.tvUsernameHomepage.text = myBundle.getString("username")
+        homepageBinding.tvScoreHomepage.text = "+" + myBundle.getInt("total_score").toString() + " pts"
         homepageBinding.btnPlay.setOnClickListener{
             val intentPregame = Intent(applicationContext, Pregame::class.java)
+            intentPregame.putExtras(myBundle)
             startActivity(intentPregame)
+            finish()
         }
     }
 
-    override fun onBackPressed() {
-        //Fai l'alert dialog, lo stesso nel main activity in onBackPressed()
-        println("Pressed")
-    }
+    override fun onBackPressed() {}
 }

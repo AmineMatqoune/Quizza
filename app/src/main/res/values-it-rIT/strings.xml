@@ -17,4 +17,10 @@
     <string name="pregame_categories">Categorie:</string>
     <string name="results_postgame">Risultati</string>
     <string name="wrong_credentials_dialog">Inserisci correttamente i tuoi dati</string>
+    <string name="geo_label">geografia</string>
+    <string name="math_label">matematica</string>
+    <string name="music_label">musica</string>
+    <string name="physics_label">fisica</string>
+    <string name="science_label">scienze</string>
+    <string name="login_succesfull">Login avvenuto con successo</string>
 </resources>

@@ -35,26 +35,41 @@
             android:weightSum="10">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvQuestionA"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="6"
                 app:cardCornerRadius="8dp">
 
+                <LinearLayout
+                    android:id="@+id/lCategoryA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCategoryAPG"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/coiny"
+                        android:gravity="center"
+                        android:textColor="@color/text_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/ivQuestionA"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+                android:layout_weight="1.7" />
 
             <TextView
                 android:id="@+id/tvQuestionA"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
+                android:layout_weight="2.3"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
@@ -74,19 +89,37 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="6"
-                app:cardCornerRadius="8dp" />
+                app:cardCornerRadius="8dp" >
+
+                <LinearLayout
+                    android:id="@+id/lCategoryB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCategoryBPG"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/coiny"
+                        android:gravity="center"
+                        android:textColor="@color/text_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/ivQuestionB"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+                android:layout_weight="1.7" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tvQuestionB"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
+                android:layout_weight="2.3"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
@@ -108,19 +141,35 @@
                 android:layout_weight="6"
                 app:cardCornerRadius="8dp">
 
+                <LinearLayout
+                    android:id="@+id/lCategoryC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCategoryCPG"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/coiny"
+                        android:gravity="center"
+                        android:textColor="@color/text_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/ivQuestionC"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+                android:layout_weight="1.7" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/tvQuestionC"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
+                android:layout_weight="2.3"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
@@ -142,19 +191,35 @@
                 android:layout_weight="6"
                 app:cardCornerRadius="8dp">
 
+                <LinearLayout
+                    android:id="@+id/lCategoryD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCategoryDPG"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/coiny"
+                        android:gravity="center"
+                        android:textColor="@color/text_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/ivQuestionD"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+                android:layout_weight="1.7" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/tvQuestionD"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
+                android:layout_weight="2.3"
                 android:fontFamily="@font/coiny"
                 android:gravity="center"
                 android:textColor="#FFFFFF"

@@ -20,23 +20,28 @@ class Ingame(): AppCompatActivity() {
     private lateinit var match: Match
     private var countDown = Match.QUESTION_MAX_TIMER  //30 seconds for each question
     private lateinit var countDownTimer: CountDownTimer
+    private var isClicked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ingameBinding = IngameBinding.inflate(layoutInflater)
         setContentView(ingameBinding.root)
-        match = intent.getSerializableExtra("match_instance") as Match
-
+        match = intent.getSerializableExtra(intent.extras?.getInt("total_score").toString()) as Match
         setQuestionOnUI()
     }
 
+    override fun onBackPressed() {}
+
     private fun setQuestionOnUI() {
+        isClicked = false
         currentQuestion = match?.loadNextQuestion()
 
         if (currentQuestion == null) {
             val intentPostgame = Intent(applicationContext, Postgame::class.java)
-            intentPostgame.putExtra("match_instance", match)
+            intentPostgame.putExtra(intent.extras?.getInt("total_score").toString(), match)
+            intentPostgame.putExtras(intent.extras!!)
             startActivity(intentPostgame)
+
         } else {
             ingameBinding.tvQuestionIngame.text = currentQuestion!!.getQuestion()
             startTimer()
@@ -112,30 +117,33 @@ class Ingame(): AppCompatActivity() {
     }
 
     fun validateAnswer(view: View){
-        countDownTimer.cancel()
-        var isCorrect = false
-        when(view.id){
-            ingameBinding.cvAnswerA.id -> {
-                isCorrect = match.checkAnswer(ingameBinding.tvAnswerA.text.toString())
-                if(isCorrect) ingameBinding.layoutAnswerA.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerA.setBackgroundResource(R.color.wrong_answer)
+        if(!isClicked) {
+            isClicked = true
+            countDownTimer.cancel()
+            var isCorrect = false
+            when (view.id) {
+                ingameBinding.cvAnswerA.id -> {
+                    isCorrect = match.checkAnswer(ingameBinding.tvAnswerA.text.toString())
+                    if (isCorrect) ingameBinding.layoutAnswerA.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerA.setBackgroundResource(R.color.wrong_answer)
+                }
+                ingameBinding.cvAnswerB.id -> {
+                    isCorrect = match.checkAnswer(ingameBinding.tvAnswerB.text.toString())
+                    if (isCorrect) ingameBinding.layoutAnswerB.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerB.setBackgroundResource(R.color.wrong_answer)
+                }
+                ingameBinding.cvAnswerC.id -> {
+                    isCorrect = match.checkAnswer(ingameBinding.tvAnswerC.text.toString())
+                    if (isCorrect) ingameBinding.layoutAnswerC.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerC.setBackgroundResource(R.color.wrong_answer)
+                }
+                ingameBinding.cvAnswerD.id -> {
+                    isCorrect = match.checkAnswer(ingameBinding.tvAnswerD.text.toString())
+                    if (isCorrect) ingameBinding.layoutAnswerD.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerD.setBackgroundResource(R.color.wrong_answer)
+                }
             }
-            ingameBinding.cvAnswerB.id -> {
-                isCorrect = match.checkAnswer(ingameBinding.tvAnswerB.text.toString())
-                if(isCorrect) ingameBinding.layoutAnswerB.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerB.setBackgroundResource(R.color.wrong_answer)
-            }
-            ingameBinding.cvAnswerC.id -> {
-                isCorrect = match.checkAnswer(ingameBinding.tvAnswerC.text.toString())
-                if(isCorrect) ingameBinding.layoutAnswerC.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerC.setBackgroundResource(R.color.wrong_answer)
-            }
-            ingameBinding.cvAnswerD.id -> {
-                isCorrect = match.checkAnswer(ingameBinding.tvAnswerD.text.toString())
-                if(isCorrect) ingameBinding.layoutAnswerD.setBackgroundResource(R.color.correct_answer) else ingameBinding.layoutAnswerD.setBackgroundResource(R.color.wrong_answer)
-            }
-        }
 
-        launchSound(isCorrect)
-        if(isCorrect) match.setScore(countDown, match.currentQuestionIndex - 1) else match.setScore(0, match.currentQuestionIndex - 1)
-        loadNextQuestion()
+            launchSound(isCorrect)
+            if (isCorrect) match.setScore(countDown, match.currentQuestionIndex - 1) else match.setScore(0, match.currentQuestionIndex - 1)
+            loadNextQuestion()
+        }
     }
 
     fun launchSound(isCorrect: Boolean){

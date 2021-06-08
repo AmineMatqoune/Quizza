@@ -27,11 +27,6 @@ class Question(): Serializable {
     fun getWrongAnswers(index: Int): String{
         return if (index >= wrongAnswers.size) wrongAnswers.last().getAnswer() else wrongAnswers[index].getAnswer()
     }
-
-    fun getInfo(): String {
-        return "\n\nquestion: $question \nright answer: $rightAnswer \nwrong answer: " +
-                "${wrongAnswers[0].getAnswer()}, ${wrongAnswers[1].getAnswer()}, ${wrongAnswers[2].getAnswer()}"
-    }
 }
 
 class WrongAnswer: Serializable {

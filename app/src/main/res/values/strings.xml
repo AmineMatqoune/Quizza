@@ -22,6 +22,13 @@
     <string name="pregame_categories">Categories:</string>
     <string name="results_postgame">Results</string>
     <string name="wrong_credentials_dialog">Insert correctly your data</string>
+    <string name="geo_label">geography</string>
+    <string name="math_label">math</string>
+    <string name="music_label">music</string>
+    <string name="physics_label">physics</string>
+    <string name="science_label">science</string>
+    <string name="sport_label" translatable="false">sport</string>
+    <string name="login_succesfull">Login Succesfull</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>

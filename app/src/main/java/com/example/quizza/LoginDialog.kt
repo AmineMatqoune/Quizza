@@ -39,7 +39,7 @@ class LoginDialog(myContext: Context): DialogFragment() {
                         userBundle = Bundle()
                         userBundle.putString("username", user.username)
                         userBundle.putString("avatar", user.avatar)
-                        userBundle.putInt("totalScore", user.totalScore)
+                        userBundle.putInt("total_score", user.totalScore)
                         LoginViewModel.loginSuccess()
                     }
                 }
@@ -60,9 +60,9 @@ class LoginDialog(myContext: Context): DialogFragment() {
     private fun setViewModel(){
         val loginObserver = Observer<Boolean>{
             if(LoginViewModel.getStatus() == false)
-                Toast.makeText(appContext, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
             else{
-                Toast.makeText(appContext, "Login Succesfull", Toast.LENGTH_SHORT).show()
+                Toast.makeText(appContext, getString(R.string.login_succesfull), Toast.LENGTH_SHORT).show()
                 val intentHomePage = Intent(appContext, Homepage::class.java)
                 intentHomePage.putExtras(userBundle)  //passing the bundle into the intent
                 startActivity(intentHomePage)
