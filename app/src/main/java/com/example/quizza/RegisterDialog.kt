@@ -54,13 +54,17 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                 user.avatar = rootView.spinnerAvatar.selectedItem.toString()
                 user.totalScore = 0
 
-                Toast.makeText(appContext, rootView.spinnerAvatar.selectedItem.toString(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(appContext, rootView.spinnerAvatar.selectedItem.toString(), Toast.LENGTH_SHORT).show()
                 CoroutineScope(Dispatchers.IO).launch {
                     userDao.insertNewUser(user)
-                    println(getString(R.string.register_welcome))
                 }
-            } else
+
+            } else {
                 Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
+            }
+
+            this.dismiss()
+            Toast.makeText(appContext, getString(R.string.can_login_text), Toast.LENGTH_SHORT).show()
         }
 
         return rootView

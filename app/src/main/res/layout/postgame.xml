@@ -39,23 +39,34 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="6"
+                android:background="#FFFFFF"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:id="@+id/lCategoryA"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvCategoryAPG"
-                        android:layout_width="match_parent"
+                        android:layout_width="175dp"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/coiny"
                         android:gravity="center"
                         android:textColor="@color/text_color"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        app:srcCompat="@drawable/info" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -95,17 +106,23 @@
                     android:id="@+id/lCategoryB"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvCategoryBPG"
-                        android:layout_width="match_parent"
+                        android:layout_width="175dp"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/coiny"
                         android:gravity="center"
                         android:textColor="@color/text_color"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/info" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -145,17 +162,24 @@
                     android:id="@+id/lCategoryC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvCategoryCPG"
-                        android:layout_width="match_parent"
+                        android:layout_width="175dp"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/coiny"
                         android:gravity="center"
                         android:textColor="@color/text_color"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/info" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -195,17 +219,24 @@
                     android:id="@+id/lCategoryD"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvCategoryDPG"
-                        android:layout_width="match_parent"
+                        android:layout_width="175dp"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/coiny"
                         android:gravity="center"
                         android:textColor="@color/text_color"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/info" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

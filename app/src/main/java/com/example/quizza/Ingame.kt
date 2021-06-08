@@ -146,6 +146,8 @@ class Ingame(): AppCompatActivity() {
         }
     }
 
+
+
     fun launchSound(isCorrect: Boolean){
         if(isCorrect)
             audioPlayer = MediaPlayer.create(applicationContext, R.raw.correct_answer)

@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.quizza.databinding.PostgameBinding
 import com.example.quizza.entities.Match
 import kotlinx.android.synthetic.main.postgame.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Postgame: AppCompatActivity() {
 
@@ -25,9 +28,17 @@ class Postgame: AppCompatActivity() {
         bundle = intent.extras
 
         postgameBinding.btnNext.setOnClickListener{
-            val intentHomepage = Intent(applicationContext, Homepage::class.java)
-            //updateDB
             val totalScore = bundle!!.getInt("total_score") + gameScore
+            val username = bundle!!.getString("username")
+            //update user's score
+            val db = DBManager.getInstance(applicationContext)
+            val userDao = db.userDAO()
+
+            CoroutineScope(Dispatchers.IO).launch {
+                userDao.updateScore(username!!, totalScore)
+            }
+
+            val intentHomepage = Intent(applicationContext, Homepage::class.java)
             bundle!!.putInt("total_score", totalScore)
             intentHomepage.putExtras(bundle!!)
             startActivity(intentHomepage)

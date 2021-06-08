@@ -23,4 +23,5 @@
     <string name="physics_label">fisica</string>
     <string name="science_label">scienze</string>
     <string name="login_succesfull">Login avvenuto con successo</string>
+    <string name="can_login_text">Adesso puoi accedere</string>
 </resources>
