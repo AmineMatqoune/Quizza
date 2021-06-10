@@ -30,6 +30,7 @@ class Postgame: AppCompatActivity() {
         postgameBinding.btnNext.setOnClickListener{
             val totalScore = bundle!!.getInt("total_score") + gameScore
             val username = bundle!!.getString("username")
+
             //update user's score
             val db = DBManager.getInstance(applicationContext)
             val userDao = db.userDAO()
