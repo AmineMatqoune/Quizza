@@ -27,6 +27,26 @@ class Postgame: AppCompatActivity() {
 
         bundle = intent.extras
 
+        postgameBinding.infoA.setOnClickListener{
+            val infoDialog = InfoDialog(match.getQuestions()[0])
+            infoDialog.show(supportFragmentManager, "infoDialog")
+        }
+
+        postgameBinding.infoB.setOnClickListener{
+            val infoDialog = InfoDialog(match.getQuestions()[1])
+            infoDialog.show(supportFragmentManager, "infoDialog")
+        }
+
+        postgameBinding.infoC.setOnClickListener{
+            val infoDialog = InfoDialog(match.getQuestions()[2])
+            infoDialog.show(supportFragmentManager, "infoDialog")
+        }
+
+        postgameBinding.infoD.setOnClickListener{
+            val infoDialog = InfoDialog(match.getQuestions()[3])
+            infoDialog.show(supportFragmentManager, "infoDialog")
+        }
+
         postgameBinding.btnNext.setOnClickListener{
             val totalScore = bundle!!.getInt("total_score") + gameScore
             val username = bundle!!.getString("username")
