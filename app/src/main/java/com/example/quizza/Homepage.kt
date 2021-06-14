@@ -17,6 +17,8 @@ class Homepage: AppCompatActivity() {
         homepageBinding = HomepageBinding.inflate(layoutInflater)
         setContentView(homepageBinding.root)
 
+        homepageBinding.bgHomepage.setBackgroundResource(AppColor.getBackgroundColor())
+
         myBundle = intent.extras!!
         when(myBundle.getString("avatar")){    //myBundle can be null-able
             "Joe" -> homepageBinding.ivAvatarHomepage.setBackgroundResource(R.drawable.joe)

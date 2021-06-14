@@ -25,6 +25,8 @@ class Postgame: AppCompatActivity() {
         setContentView(postgameBinding.root)
         match = intent.getSerializableExtra(intent.extras?.getInt("total_score").toString()) as Match
 
+        postgameBinding.bgPostgame.setBackgroundResource(AppColor.getBackgroundColor())
+
         bundle = intent.extras
 
         postgameBinding.infoA.setOnClickListener{

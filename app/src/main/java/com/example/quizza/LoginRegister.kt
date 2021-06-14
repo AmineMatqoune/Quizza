@@ -31,14 +31,14 @@ class LoginRegister : AppCompatActivity(){
             val builder = AlertDialog.Builder(this)
 
             builder.setTitle(R.string.sound_alert_title)
-            builder.setNegativeButton("NO", DialogInterface.OnClickListener { dialog, it -> })
+            builder.setNegativeButton(R.string.no_text, DialogInterface.OnClickListener { dialog, it -> })
 
             if(MainActivity.audioPlayer.isPlaying) {        //sound is playing
                 builder.setMessage(R.string.sound_disable_text)
-                builder.setPositiveButton("YES", DialogInterface.OnClickListener { dialog, it -> MainActivity.audioPlayer.pause()})
+                builder.setPositiveButton(R.string.yes_text, DialogInterface.OnClickListener { dialog, it -> MainActivity.audioPlayer.pause()})
             }else{                                       //sound is not playing
                 builder.setMessage(R.string.sound_enable_text)
-                builder.setPositiveButton("YES", DialogInterface.OnClickListener { dialog, it -> MainActivity.audioPlayer.start()})
+                builder.setPositiveButton(R.string.yes_text, DialogInterface.OnClickListener { dialog, it -> MainActivity.audioPlayer.start()})
             }
 
             builder.create().show()
@@ -47,7 +47,14 @@ class LoginRegister : AppCompatActivity(){
         loginBinding.btnPalette.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.choose_theme))
-            builder.setItems(arrayOf("Dark", "Light", "Neutral"), DialogInterface.OnClickListener{ dialog, which -> })
+            builder.setItems(arrayOf("Dark", "Neutral"), DialogInterface.OnClickListener{ dialog, which ->
+                if(which == 0)
+                    AppColor.setTheme("Dark")
+                else
+                    AppColor.setTheme("Neutral")
+
+                loginBinding.bgLoginRegister.setBackgroundResource(AppColor.getBackgroundColor())
+            })
             builder.create().show()
         }
     }

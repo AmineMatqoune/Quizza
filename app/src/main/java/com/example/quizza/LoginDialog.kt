@@ -24,6 +24,8 @@ class LoginDialog(myContext: Context): DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View = inflater.inflate(R.layout.login_dialog, container, false)
 
+        rootView.bgLoginDialog.setBackgroundResource(AppColor.getBackgroundColor())
+
         rootView.btnLogin.setOnClickListener{
             //Validate input and then try log-in
             if(validateInput(rootView.etUsernameLog.text.toString(), rootView.etpPasswordLog.text.toString())) {

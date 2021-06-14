@@ -17,6 +17,8 @@ class InfoDialog(question: Question): DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View = inflater.inflate(R.layout.info_dialog, container, false)
 
+        rootView.bgInfoDialog.setBackgroundResource(AppColor.getBackgroundColor())
+
         rootView.tvQuestionInfo.text = myQuestion.getQuestion()
         rootView.tvAnswerInfoA.text = "1. " + myQuestion.getCorrectAnswer()
         rootView.tvAnswerInfoB.text = "2. " + myQuestion.getWrongAnswers(0)

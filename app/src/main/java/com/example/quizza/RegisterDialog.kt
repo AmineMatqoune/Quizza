@@ -17,7 +17,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class RegisterDialog(myContext: Context): DialogFragment() {
 
     private val appContext = myContext
@@ -25,6 +24,8 @@ class RegisterDialog(myContext: Context): DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         var rootView: View = inflater.inflate(R.layout.register_dialog, container, false)
+
+        rootView.bgRegisterDialog.setBackgroundResource(AppColor.getBackgroundColor())
 
         rootView.spinnerAvatar.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View, position: Int, id: Long) {
@@ -38,8 +39,7 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                 }
             }
 
-            override fun onNothingSelected(parentView: AdapterView<*>?) {
-            }
+            override fun onNothingSelected(parentView: AdapterView<*>?) {}
         })
 
         rootView.btnRegister.setOnClickListener{
@@ -54,11 +54,9 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                 user.avatar = rootView.spinnerAvatar.selectedItem.toString()
                 user.totalScore = 0
 
-                //Toast.makeText(appContext, rootView.spinnerAvatar.selectedItem.toString(), Toast.LENGTH_SHORT).show()
                 CoroutineScope(Dispatchers.IO).launch {
                     userDao.insertNewUser(user)
                 }
-
             } else {
                 Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
             }
@@ -72,6 +70,6 @@ class RegisterDialog(myContext: Context): DialogFragment() {
 
     fun validateInput(username: String, email: String, password: String): Boolean{
         //assuming that both username and password must be no longer than 18 char and no shorter than 5 char
-        return username.length < 19 && username.length > 5 && email.length > 4 && email.length < 21 && password.length > 4 && password.length < 19
+        return username.length < 19 && username.length > 4 && email.length > 4 && email.length < 21 && password.length > 4 && password.length < 19
     }
 }

@@ -38,6 +38,8 @@ class Pregame: AppCompatActivity() {
         pregameBinding = PregameBinding.inflate(layoutInflater)
         setContentView(pregameBinding.root)
 
+        pregameBinding.bgPregame.setBackgroundResource(AppColor.getBackgroundColor())
+
         launchCountdownAnimation()
         loadGame()
     }

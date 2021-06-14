@@ -26,6 +26,9 @@ class Ingame(): AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ingameBinding = IngameBinding.inflate(layoutInflater)
         setContentView(ingameBinding.root)
+
+        ingameBinding.bgIngame.setBackgroundResource(AppColor.getBackgroundColor())
+
         match = intent.getSerializableExtra(intent.extras?.getInt("total_score").toString()) as Match
         setQuestionOnUI()
     }

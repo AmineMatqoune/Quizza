@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bgLoginDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_background"
@@ -9,7 +10,6 @@
         android:id="@+id/tvQuizzaLogin"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/blue_background"
         android:fontFamily="@font/coiny"
         android:gravity="center"
         android:text="@string/login_button_text"
