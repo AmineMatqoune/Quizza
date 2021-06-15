@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue_background">#34BBE8</color>
     <color name="dark_background">#535353</color>
+    <color name="solar_background">#FFFF00</color>
     <color name="text_color">#535353</color>
     <color name="correct_answer">#33E81B</color>
     <color name="wrong_answer">#E83232</color>

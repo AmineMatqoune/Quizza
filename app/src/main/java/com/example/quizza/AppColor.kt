@@ -21,8 +21,10 @@ class AppColor() {
         fun getBackgroundColor(): Int {
             if (theme == "Neutral")
                 return R.color.blue_background
-            else
+            else if (theme == "Dark")
                 return R.color.dark_background
+            else
+                return R.color.solar_background
         }
     }
 

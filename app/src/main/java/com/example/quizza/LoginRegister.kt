@@ -47,11 +47,13 @@ class LoginRegister : AppCompatActivity(){
         loginBinding.btnPalette.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.choose_theme))
-            builder.setItems(arrayOf("Dark", "Neutral"), DialogInterface.OnClickListener{ dialog, which ->
+            builder.setItems(arrayOf("Dark", "Neutral", "Solare"), DialogInterface.OnClickListener{ dialog, which ->
                 if(which == 0)
                     AppColor.setTheme("Dark")
-                else
+                else if (which == 1)
                     AppColor.setTheme("Neutral")
+                else
+                    AppColor.setTheme("Solar")
 
                 loginBinding.bgLoginRegister.setBackgroundResource(AppColor.getBackgroundColor())
             })
