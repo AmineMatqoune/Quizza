@@ -1,0 +1,51 @@
+**********SCREEN LAUNCHER
+
+Quizza è un'applicazione che simula un quiz interattivo e semplice in cui vengono proposte domande all'utente, riguardo diverse categorie a cui bisogna rispondere e qualora la risposta sia corretta allora l'utente riceve un punteggio proporzionato a quanto tempo ha impiegato a rispondere.
+L'applicazione è stata sviluppata sia in italiano che in inglese a seconda della lingua utilizzata dal sistema Android.
+
+*********SCREEN LOGIN REGISTER
+
+All'avvio di Quizza, appare una schermata per qualche secondo raffigurante il logo e il nome del gioco(come in figura), dopodichè viene caricata una schermata in cui è possibile interagire in diversi modi:
+	* Effettuare il Login
+	** Registrare un nuovo utente
+	*** Abilitare o disabilitare il volume
+	**** Cambiare il tema del gioco
+	***** Tornare indietro e mostrare il logo
+ 
+***********SCREEN LOGIN DIALOG
+
+* Alla pressione del tasto "Login" appare una schermata ridotta che mostra un form (Dialog) con cui l'utente può accedere inserendo username e password, se i dati inseriti sono corretti si verrà indirizzati nella homepage (figura 1) del gioco raffigurante:
+												- icona avatar dell'account
+												- nome utente
+												- punteggio totale accumulato
+												- tasto <Play> per iniziare una partita a Quizza
+												- logo app
+
+**************SCREEN REGISTER DIALOG
+
+**Alla pressione del tasto "Register" appare una schermata ridotta che mostra un form (Dialog) con cui l'utente può registrare un nuovo account.
+L'utente dovrà inserire un username, una email, una password e selezionare un avatar.
+Gli unici vincoli nella creazione di un account sono: 
+							- inserire un username non sia stato già utilizzato
+							- inserire un username compreso tra 5 e 18 caratteri
+							- inserire una email compresa tra 5 e 20 caratteri
+							- inserire una password compresa tra 5 e 18 caratteri
+
+Se il processo di registrazione è andato a buon fine, un messaggio a schermo apparirà informando l'utente che può accedere al suo account,
+altrimenti lo inviterà a correggere i dati inseriti.
+
+**************SCREEN DIALOG SUONO
+
+***Quando si preme l'icona del volume, appare una finestra (Dialog) che permette all'utente di scegliere di abilitare o disabilitare il volume.
+
+***********SCREEN DIALOG PALETTE
+
+****Quando si preme l'icona della palette, appare una finestra (Dialog) che permette all'utente di scegliere il tema del gioco. Si può scegliere tra Neutral (Celeste), Dark (Grigio), Solar (Giallo).
+
+*****Se si preme il tasto indietro del dispositivo si torna alla schermata iniziale dell'applicazione raffigurante Quizza.
+
+Alla pressione del tasto Play, il gioco sorteggerà 4 tra le 6 categorie disponibili e partendo da quelle pescherà 1 domanda ciascuna dall'asset dell'app.
+Prima della partita si mostra a schermo un countdown animato di 3 secondi in cui mostra all'utente le categorie a cui dovrà prepararsi a rispondere; in ordine verranno proposte una ciascuna in modo interattivo e divertente (figura 2).
+Nel mentre che l'utente aspetta nel rispondere, un timer di 30 secondi scorre, al cui stop verrà definito il punteggio che l'utente riceverà per quella domanda, sostanzialmente, più tempo si impiega a rispondere, minore è il punteggio ottenuto! (figura 3)
+Alla fine di tutte e 4 le domande verrà mostrato un riepilogo della partita, attraverso il quale l'utente può consultare le domande a cui ha risposto e vederne il punteggio ottenuto.
+Lo score della singola partita viene successivamente sommato al punteggio totale accumulato dell'account (figura 4).

@@ -1,0 +1,3 @@
+spiega che è Room, come l'abbiamo implementato (via Gradle module:app)
+
+stessa cosa per GSON

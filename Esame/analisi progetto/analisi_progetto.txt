@@ -1,0 +1,68 @@
+PROGRAMMAZIONE DI QUIZZA:
+	- Quizza è un'applicazione sviluppata per sistemi operativi AndroidOS e scritta in linguaggio Kotlin,
+	  un potente e moderno linguaggio al 100% interoperabile con Java.
+
+STRUTTURA BASE: 
+	- L'intera applicazione è stata progettata e poi sviluppata per essere quanto più modulare possibile,
+	  permettendoci di poterla aggiornare e mantenere semplicemente; pertanto è stato implementato il
+	  paradigma M-V-VM al fine di distinguere e gestire meglio gli organi principali dell'app.
+	  In particolare:
+		- L'intero set Model è costituita da classi contenenti informazioni su utenti, partite e domande (figura 1)
+
+		- L'intero set View è costituita da classi che inizialmente da Kotlin sono state autogenerate in Java
+	  	  e che definiscono la geometria delle schermate presenti nell'app e le varie azioni che verranno svolte
+	  	  quando l'utente interagisce con l'app (figura 2)
+
+		- L'intero set View Model, considerandolo come il Controller nel paradigma MVC - Model View Controller,
+	  	  possiede tutte quelle classi che gestiscono la logica di gioco, comunicano col sistema operativo android
+	      facendo uso di librerie e reagiscono attivamente agli eventi (figura 3)
+
+FACILITAZIONI:
+	- Per velocizzare lo sviluppo di Quizza, ci siamo affidati completamente al sistema Gradle, una componente
+	  principale di Android Studio che funge da gestore e manager delle dipendencies, in particolare ci ha permesso
+	  di automatizzare molte task come p.e. il refactoring dell'intero codice, lo spostamento e la modifica dei file 
+	  (sempre mantenendo la consistenza) ma soprattutto l'autogenerazione di classi (di binding)
+	  necessarie a collegare la logica con la UI (figura 4).
+
+	  Di seguito un esempio per la classe Homepage:
+	  **********************SCREEN XML TO BINDING
+
+	- Abbiamo fatto largo uso di un sistema di "astrazione" delle risorse a cui abbiamo fatto riferimento all'interno del codice
+	  (colori, stringhe traducibili, immagini, tracce audio etc...) il tutto attraverso la classe R (R-esource)
+	  (figura 5).
+	  **********************SCREEN UTILIZZO CLASSE R
+
+	- Come specificato nel documento "modalità di lavoro", i componenti del gruppo Quizza si sono appoggiati a GitHub, un sistema
+	  cloud di versioning (e oltre) dell'intero progetto che ci ha permesso di tenere traccia delle modifiche del codice,
+	  eventualmente usufruire di copie di backup del sorgente e di avere sempre a disposizione il progetto per intero
+	  per poterlo aggiornare. (figura 6)
+	  **********************SCREEN GITHUB
+
+ARCHITETTURA:
+	- L'intera applicazione volge su 4 componenti principali:
+		- Un set di file binari che fungono da risorse per l'app in termini di immagini, tracce, database*, JSON**. 
+		- Un set di file XML di layout ciascuno contenente il codice che descrive la UI corrispondente (che verrà poi tradotto in classi Java nella fase di build)
+		- Un set di classi (ciascuno per file XML di layout) che da una logica alla UI e associa delle azioni alle interazioni dell'utente
+		- Un set di classi che completano l'app aggiungendo dati, funzionalità e logica a Quizza.
+
+		* Il database in questione contiene dati riguardanti gli account in modo tale che l'app si inizializzi correttamente durante l'installazione; questo strato
+		  di persistenza permette all'utente l'accesso al gioco tramite account e mantiene i punteggi relativi che si accumulano.
+		  Un database simile, siccome è leggero, dovrebbe risiedere in un cloud a cui quizza accede direttamente via Internet ogni volta che l'utente vuole accedere al proprio account,
+		  per semplicità abbiamo volutamente veicolato il database intero assieme all'app, rimandando la questione nel caso volessimo portare l'app sul market per il pubblico.
+		  A tal fine è stata implementata la libreria ROOM, per ulteriori info si rimanda al documento "librerie_esterne".
+
+		** I file JSON veicolati assieme all'app (nell'asset) vengono utilizzati per ricavare le domande del gioco a cui l'utente dovrà rispondere.
+		   Questi file vengono presi randomicamente dall'app e proposti nel gioco, ciascuno di essi specifica una domanda, una risposta corretta
+		   e un set di risposte sbagliate (anch'esse prese casualmente).
+		   Tale scelta è stata fatta per semplicità, il modo più corretto (sempre qualora volessimo portare l'app sul market) sarebbe quello di mettere i file JSON
+		   nel cloud e costruire un backend lato server che ritorni le domande quando richiesto, in questo modo l'APK diventerebbe molto più leggero e non trasporterebbe
+		   centinaia di file contenenti domande, oltre a diminuire l'overhead computazionale del dispositivo utente quando vuole giocare una partita.
+		   A tal fine è stata implementata la libreria GSON (sviluppata da Google), per ulteriori info si rimanda al documento "librerie_esterne".
+
+		Per comunicare con l'utente delle semplici azioni/messaggi di notifica abbiamo fatto affidamento a dei costrutti built-in di Android,
+		ovvero Toast (brevi messaggi a schermo) e Dialog (semplici azioni).
+
+ALTRE INFO SULLO SVILUPPO:
+	- Per realizzare Quizza, in particolare tutte le immagini, stringhe di testo, tracce audio che l'app porta con sè, è stato necessario
+	  l'ausilio di software esterni quali Photoshop (per molte delle icone), Sony Vegas (software di editing video/audio), Sublime (editor di file in JSON e altri linguaggi)
+	  (figura 7).
