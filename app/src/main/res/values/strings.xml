@@ -29,7 +29,7 @@
     <string name="science_label">science</string>
     <string name="sport_label" translatable="false">sport</string>
     <string name="login_succesfull">Login Succesfull</string>
-    <string name="can_login_text">Now you can login</string>
+    <string name="user_can_login_text">Now you can login</string>
     <string-array name="avatar_list">
         <item>Joe</item>
         <item>Lara</item>

@@ -55,7 +55,6 @@
             android:layout_weight="1.5"
             android:fontFamily="@font/coiny"
             android:gravity="center"
-            android:text="XXX XXX pts"
             android:textColor="#FFFFFF"
             android:textSize="36sp" />
 

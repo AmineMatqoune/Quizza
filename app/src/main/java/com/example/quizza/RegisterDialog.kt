@@ -9,9 +9,9 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import com.example.quizza.entities.User
-import kotlinx.android.synthetic.main.login_dialog.view.*
-import kotlinx.android.synthetic.main.register_dialog.*
+import com.example.quizza.viewmodels.LogRegViewModel
 import kotlinx.android.synthetic.main.register_dialog.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -47,7 +47,7 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                 val db = DBManager.getInstance(appContext)
                 val userDao = db.userDAO()
 
-                val user = User( )
+                val user = User()
                 user.username = rootView.etUsernameReg.text.toString()
                 user.password = rootView.etpPasswordReg.text.toString()
                 user.email= rootView.etEmailReg.text.toString()
@@ -55,17 +55,31 @@ class RegisterDialog(myContext: Context): DialogFragment() {
                 user.totalScore = 0
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    userDao.insertNewUser(user)
-                }
-            } else {
-                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
-            }
+                    val userExists = userDao.checkUserExists(user.username)
 
-            this.dismiss()
-            Toast.makeText(appContext, getString(R.string.can_login_text), Toast.LENGTH_SHORT).show()
+                    if(userExists != null)
+                        LogRegViewModel.registerFail()
+                    else{
+                        userDao.insertNewUser(user)
+                        LogRegViewModel.registerSuccess()
+                    }
+                }
+            } else
+                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
         }
 
+        setViewModel()
         return rootView
+    }
+
+    private fun setViewModel(){
+        val registerObserver = Observer<Boolean>{
+            if(LogRegViewModel.isRegistered.value == true)
+                Toast.makeText(appContext, getString(R.string.user_can_login_text), Toast.LENGTH_SHORT).show()
+            else
+                Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
+        }
+        LogRegViewModel.isRegistered.observe(this, registerObserver)
     }
 
     fun validateInput(username: String, email: String, password: String): Boolean{

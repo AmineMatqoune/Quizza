@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quizza">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+                  android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,14 +25,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Pregame">
+        <activity android:name=".Pregame"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginRegister">
+        <activity android:name=".LoginRegister"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -43,7 +47,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Postgame">
+        <activity android:name=".Postgame"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

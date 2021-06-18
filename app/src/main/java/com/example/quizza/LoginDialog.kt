@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-import com.example.quizza.viewmodels.LoginViewModel
+import com.example.quizza.viewmodels.LogRegViewModel
 
 class LoginDialog(myContext: Context): DialogFragment() {
 
@@ -36,13 +36,13 @@ class LoginDialog(myContext: Context): DialogFragment() {
                     val user = userDao.checkLogin(rootView.etUsernameLog.text.toString(), rootView.etpPasswordLog.text.toString())
 
                     if(user == null)                  //Equivalent of "Invalid Credentials"
-                        LoginViewModel.loginFail()
+                        LogRegViewModel.loginFail()
                     else {                            //create user bundle to pass to homepage activity
                         userBundle = Bundle()
                         userBundle.putString("username", user.username)
                         userBundle.putString("avatar", user.avatar)
                         userBundle.putInt("total_score", user.totalScore)
-                        LoginViewModel.loginSuccess()
+                        LogRegViewModel.loginSuccess()
                     }
                 }
             }
@@ -61,7 +61,7 @@ class LoginDialog(myContext: Context): DialogFragment() {
 
     private fun setViewModel(){
         val loginObserver = Observer<Boolean>{
-            if(LoginViewModel.getStatus() == false)
+            if(LogRegViewModel.getStatus() == false)
                 Toast.makeText(appContext, getString(R.string.wrong_credentials_dialog), Toast.LENGTH_SHORT).show()
             else{
                 Toast.makeText(appContext, getString(R.string.login_succesfull), Toast.LENGTH_SHORT).show()
@@ -71,6 +71,6 @@ class LoginDialog(myContext: Context): DialogFragment() {
             }
         }
 
-        LoginViewModel.isLogged.observe(this, loginObserver)
+        LogRegViewModel.isLogged.observe(this, loginObserver)
     }
 }
